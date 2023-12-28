@@ -25,7 +25,7 @@ function App() {
         expandable: true
       }
     ],
-    render: (r, c, h) => <span css={css`color: red`}>{r.value.name}</span>,
+    render: (r, _1, _2) => <span css={css`color: red`}>{r.value.name}</span>,
     fetchChildren: async _ => [
       {
         key: "2",

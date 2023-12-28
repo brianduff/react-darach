@@ -15,9 +15,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@swc/plugin-emotion": "^2.5.99",
-    "@emotion/babel-plugin": "^11.11.0",
     "@types/jest": "^29.5.11",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
@@ -31,6 +31,17 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
-  }
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "files": ["dist"],
+  "main": "./dist/library.umd.cjs",
+  "module": "./dist/library.js",
+  "exports": {
+    ".": {
+      "import": "./dist/library.js",
+      "require": "./dist/library.umd.cjs"
+    }
+  },
+  "types": "./dist/library.d.ts"
 }
