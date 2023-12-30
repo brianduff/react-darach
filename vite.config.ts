@@ -1,31 +1,33 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { resolve } from 'path'
-import dts from 'vite-plugin-dts'
+import dts from 'vite-plugin-dts';
+import path from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react({
-      jsxImportSource: "@emotion/react",
+      jsxImportSource: "@emotion/react"
     }),
-    dts({ rollupTypes: true })
+    dts({
+      insertTypesEntry: true,
+    })
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "lib/main.ts"),
-      name: "library",
-      fileName: "library"
+      entry: path.resolve(__dirname, 'src/lib/index.ts'),
+      name: 'my-lib',
+      fileName: 'my-lib',
     },
     rollupOptions: {
-      external: ["react", "react-dom", "@blueprintjs/core"],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
-          react: "React",
-          "react-dom": "React-dom",
-          "@blueprintjs/core": "Blueprintjs-core"
-        }
-      }
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            "@emotion/react": 'emotion'
+        },
+      },
     }
   }
-});
+})

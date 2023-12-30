@@ -1,0 +1,1 @@
+export { StupidButton } from './StupidButton';
