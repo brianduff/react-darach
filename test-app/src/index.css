@@ -33,3 +33,7 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.avatar {
+  border-radius: 25px; vertical-align: middle; margin-right: 7px;
+}
