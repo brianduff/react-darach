@@ -38,13 +38,13 @@ function App() {
       name: "Title"
     }],
     rows: rootEmps.map(empToRow),
-    render: (r, c, h) => <span>{c == 0 ? r.value.name : r.value.title}</span>,
-    fetchChildren: async r => childEmps.map(empToRow)
+    render: (r, c, _) => <span>{c == 0 ? r.value.name : r.value.title}</span>,
+    fetchChildren: async _ => childEmps.map(empToRow)
   }
 
   return (
     <>
-      <DataGrid model={model} />
+      <DataGrid model={model} fixedToolbar={true} />
     </>
   )
 }
