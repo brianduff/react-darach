@@ -10,7 +10,7 @@ function App() {
 
   const rootEmps = [
     {
-      name: "Jane",
+      name: "Jane Americanus",
       isManager: true,
       title: "CEO"
     }
@@ -18,7 +18,7 @@ function App() {
 
   const childEmps = [
     {
-      name: "Joe",
+      name: "Joe Schmoe",
       isManager: false,
       title: "Senior Pleb Engineer"
     }
