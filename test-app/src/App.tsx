@@ -1,33 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { DataGrid, DataModel } from 'darach'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  interface Emp {
+    name: string,
+    isManager: boolean,
+    title: string
+  }
+
+  const rootEmps = [
+    {
+      name: "Jane",
+      isManager: true,
+      title: "CEO"
+    }
+  ]
+
+  const childEmps = [
+    {
+      name: "Joe",
+      isManager: false,
+      title: "Senior Pleb Engineer"
+    }
+  ]
+
+  const empToRow = (e: Emp) => ({
+    key: e.name,
+    value: e,
+    expandable: e.isManager
+  })
+
+  const model : DataModel<Emp> = {
+    columns: [{
+      name: "Name",
+    },
+    {
+      name: "Title"
+    }],
+    rows: rootEmps.map(empToRow),
+    render: (r, c, h) => <span>{c == 0 ? r.value.name : r.value.title}</span>,
+    fetchChildren: async r => childEmps.map(empToRow)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <DataGrid model={model} />
     </>
   )
 }
