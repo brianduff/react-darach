@@ -1,6 +1,7 @@
 {
   "name": "react-darach-workspace",
   "workspaces": [
-    "lib"
+    "lib",
+    "test-app"
   ]
 }
