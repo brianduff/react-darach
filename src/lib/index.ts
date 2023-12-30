@@ -1,1 +1,2 @@
-export { StupidButton } from './StupidButton';
+export { DataGrid } from './DataGrid';
+export type { Row, Column, DataModel, RenderHints } from './DataGrid';

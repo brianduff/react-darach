@@ -20,12 +20,13 @@ export default defineConfig({
       fileName: 'my-lib',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@emotion/react', '@blueprintjs/core'],
       output: {
         globals: {
             react: 'React',
             'react-dom': 'ReactDOM',
-            "@emotion/react": 'emotion'
+            "@emotion/react": 'emotion',
+            '@blueprintjs/core': 'blueprintjs'
         },
       },
     }
